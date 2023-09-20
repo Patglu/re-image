@@ -1,7 +1,7 @@
 import RealmSwift
 import SwiftUI
 
-class Clothingitem: Object, ObjectKeyIdentifiable {
+class Clothingitem: Object, ObjectKeyIdentifiable, Codable {
     
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var itemImage = ""

@@ -48,6 +48,8 @@
 		61C37C252ABB8AFD00E08DD9 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 61C37C242ABB8AFD00E08DD9 /* FirebaseFirestoreCombine-Community */; };
 		61C37C272ABB8AFD00E08DD9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 61C37C262ABB8AFD00E08DD9 /* FirebaseFirestoreSwift */; };
 		61C37C292ABB8AFD00E08DD9 /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 61C37C282ABB8AFD00E08DD9 /* FirebaseFunctionsCombine-Community */; };
+		61C37C2C2ABB8EF900E08DD9 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C37C2B2ABB8EF900E08DD9 /* FirestoreService.swift */; };
+		61C37C2E2ABB91DC00E08DD9 /* ClothingItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C37C2D2ABB91DC00E08DD9 /* ClothingItemViewModel.swift */; };
 		61E01F622AB3015300F7F9B9 /* ColorThiefSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 61E01F612AB3015300F7F9B9 /* ColorThiefSwift */; };
 		61FACA692AAA24C500B9508E /* efficientnetv2s.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 61FACA682AAA24C500B9508E /* efficientnetv2s.mlmodel */; };
 		61FACA6B2AAA6CCF00B9508E /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 61FACA6A2AAA6CCF00B9508E /* Resnet50.mlmodel */; };
@@ -102,6 +104,8 @@
 		61C37BEE2ABB262700E08DD9 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		61C37C112ABB512C00E08DD9 /* MobileViT_fp16.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = MobileViT_fp16.mlpackage; sourceTree = "<group>"; };
 		61C37C132ABB8A6B00E08DD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		61C37C2B2ABB8EF900E08DD9 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		61C37C2D2ABB91DC00E08DD9 /* ClothingItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItemViewModel.swift; sourceTree = "<group>"; };
 		61FACA682AAA24C500B9508E /* efficientnetv2s.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = efficientnetv2s.mlmodel; sourceTree = "<group>"; };
 		61FACA6A2AAA6CCF00B9508E /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				5C4530FF2AA05B6000C7FD49 /* ComparingClothesViewModel.swift */,
+				61C37C2D2ABB91DC00E08DD9 /* ClothingItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 		5C6ABFE12A9DBD1100B2E3D7 /* ComparingApp */ = {
 			isa = PBXGroup;
 			children = (
+				61C37C2A2ABB8EDF00E08DD9 /* Firebase */,
 				61C37C132ABB8A6B00E08DD9 /* GoogleService-Info.plist */,
 				6159C5EA2AB480D9007CDAB2 /* Components */,
 				618CFF032AA6F0B400D93C21 /* Utilities */,
@@ -286,6 +292,14 @@
 				6159C5F62AB855D8007CDAB2 /* Clothing.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		61C37C2A2ABB8EDF00E08DD9 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				61C37C2B2ABB8EF900E08DD9 /* FirestoreService.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C4531052AA05BC000C7FD49 /* ZoomableScrollView.swift in Sources */,
+				61C37C2C2ABB8EF900E08DD9 /* FirestoreService.swift in Sources */,
 				6159C5F72AB855D8007CDAB2 /* Clothing.swift in Sources */,
 				6124CE392AB0A34400E87665 /* webView.swift in Sources */,
 				612C9FE62AA5D3C700C9E9B6 /* clothSegmentation.mlmodel in Sources */,
@@ -457,6 +472,7 @@
 				5C4530F42AA05ACD00C7FD49 /* ChooseClothesView.swift in Sources */,
 				6159C5EE2AB82DDD007CDAB2 /* LineShape.swift in Sources */,
 				61C37BEA2ABAF46900E08DD9 /* UIColor+Extension.swift in Sources */,
+				61C37C2E2ABB91DC00E08DD9 /* ClothingItemViewModel.swift in Sources */,
 				61C37BEF2ABB262700E08DD9 /* String+Extensions.swift in Sources */,
 				61FACA6B2AAA6CCF00B9508E /* Resnet50.mlmodel in Sources */,
 				5C4530FD2AA05B3400C7FD49 /* SourcePicker.swift in Sources */,

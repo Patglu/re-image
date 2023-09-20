@@ -1,12 +1,16 @@
 import SwiftUI
 import RealmSwift
+import Combine
 
 struct ProcessedImageView: View {
     @ObservedObject var viewModel: ComparingClothesViewModel
+    @ObservedObject var clothingViewModel = ClothingItemViewModel()
     @State private var selectedDescription = ""
     @State private var showExplination: Bool = false
     @State private var feedbackPicked = 0
     @State private var showHome = false
+    var firestoreService = FirestoreService()
+    
     
     
     init(viewModel: ComparingClothesViewModel) {
@@ -93,9 +97,6 @@ struct ProcessedImageView: View {
             
             Spacer()
             Button {
-                //Save to realm
-                //Send to firebase
-                
                 let hexColors  = viewModel.colorsFromImage.map { $0.hexString() }
             
                 let newItem = Clothingitem()
@@ -105,6 +106,10 @@ struct ProcessedImageView: View {
                     newItem.colors.append(hexColor)
                 }
                 
+                //Send to firebase
+                clothingViewModel.addItem(newItem: newItem)
+                
+                //Save to realm
                 let realm = try! Realm()
                 
                 try? realm.write{
