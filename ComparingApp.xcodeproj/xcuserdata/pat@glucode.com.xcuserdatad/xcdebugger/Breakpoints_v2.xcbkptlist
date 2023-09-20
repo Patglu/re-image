@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C75B87BC-661F-4BA4-8D21-9A645A75E59C"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12EA43CD-6BA9-4217-8A87-1DC04D228E21"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ComparingApp/ViewModels/ComparingClothesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "createClippedImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "12EA43CD-6BA9-4217-8A87-1DC04D228E21 - 77dd34a9d887d92b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ComparingApp.ComparingClothesViewModel.createClippedImage() -&gt; ()"
+                  moduleName = "ComparingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pat@glucode.com/Documents/GitVault/ComparingApp/ComparingApp/ViewModels/ComparingClothesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "2643">
+               </Location>
+               <Location
+                  uuid = "12EA43CD-6BA9-4217-8A87-1DC04D228E21 - 77dd34a9d887d92b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ComparingApp.ComparingClothesViewModel.createClippedImage() -&gt; ()"
+                  moduleName = "ComparingApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pat@glucode.com/Documents/GitVault/ComparingApp/ComparingApp/ViewModels/ComparingClothesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "2625">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
