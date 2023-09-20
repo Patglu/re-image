@@ -7,11 +7,12 @@ struct ProcessedImageView: View {
     @ObservedObject var clothingViewModel = ClothingItemViewModel()
     @State private var selectedDescription = ""
     @State private var showExplination: Bool = false
-    @State private var feedbackPicked = 0
+    @State private var selectedFeedback = ""
     @State private var showHome = false
+    
+    
+    var feebackOptions = ["Yes", "No", "Can be improved"]
     var firestoreService = FirestoreService()
-    
-    
     
     init(viewModel: ComparingClothesViewModel) {
         self.viewModel = viewModel
@@ -51,7 +52,7 @@ struct ProcessedImageView: View {
                     }
                 }
                 
-              
+                
                 
                 
                 
@@ -84,10 +85,10 @@ struct ProcessedImageView: View {
                         .font(.footnote)
                         .foregroundColor(.gray)
                     Spacer()
-                    Picker("Was the description accurate", selection: $feedbackPicked) {
-                        Text("Yes").tag(0)
-                        Text("No").tag(1)
-                        Text("Could be imporved").tag(2)
+                    Picker("Was the description accurate", selection: $selectedFeedback) {
+                        ForEach(feebackOptions, id: \.self) {
+                            Text($0)
+                        }
                     }
                     .pickerStyle(.menu)
                 }
@@ -96,40 +97,43 @@ struct ProcessedImageView: View {
             .padding()
             
             Spacer()
-            Button {
-                let hexColors  = viewModel.colorsFromImage.map { $0.hexString() }
             
-                let newItem = Clothingitem()
-                newItem.itemImage = viewModel.finalOutputImage?.toJSONString() ?? ""
-                newItem.itemDescription = selectedDescription
-                for hexColor in hexColors {
-                    newItem.colors.append(hexColor)
+            Text("Done")
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(content: {
+                    RoundedRectangle(cornerRadius: 15)
+                        .opacity(selectedFeedback == "" && selectedDescription == "" ? 1 : 0.4)
+                        .foregroundColor(.black)
+                        .padding(.horizontal)
+                })
+             
+                .onTapGesture {
+                    let hexColors  = viewModel.colorsFromImage.map { $0.hexString() }
+                    let newItem = Clothingitem()
+                    
+                    newItem.itemImage = viewModel.finalOutputImage?.toJSONString() ?? ""
+                    newItem.itemFeedback = selectedFeedback
+                    newItem.itemDescription = selectedDescription
+                    for hexColor in hexColors {
+                        newItem.colors.append(hexColor)
+                    }
+                    
+                    //Send to firebase
+                    clothingViewModel.addItem(newItem: newItem)
+                    
+                    //Save to realm
+                    let realm = try! Realm()
+                    
+                    try? realm.write{
+                        realm.add(newItem)
+                        viewModel.image = nil
+                        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
+                    }
                 }
+                .disabled(selectedFeedback == "" && selectedDescription == "")
                 
-                //Send to firebase
-                clothingViewModel.addItem(newItem: newItem)
-                
-                //Save to realm
-                let realm = try! Realm()
-                
-                try? realm.write{
-                    realm.add(newItem)
-                    viewModel.image = nil
-                    UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
-                }
-                
-            } label: {
-                Text("Done")
-            }
-            .tint(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(content: {
-                RoundedRectangle(cornerRadius: 15)
-                    .foregroundColor(.black)
-                    .padding(.horizontal)
-            })
-            
             Spacer()
                 .frame(height: 50)
         }

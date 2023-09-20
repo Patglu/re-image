@@ -230,7 +230,7 @@
 		5C6ABFE12A9DBD1100B2E3D7 /* ComparingApp */ = {
 			isa = PBXGroup;
 			children = (
-				61C37C2A2ABB8EDF00E08DD9 /* Firebase */,
+				61C37C2F2ABB94F800E08DD9 /* Services */,
 				61C37C132ABB8A6B00E08DD9 /* GoogleService-Info.plist */,
 				6159C5EA2AB480D9007CDAB2 /* Components */,
 				618CFF032AA6F0B400D93C21 /* Utilities */,
@@ -294,12 +294,20 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
-		61C37C2A2ABB8EDF00E08DD9 /* Firebase */ = {
+		61C37C2A2ABB8EDF00E08DD9 /* Firestore */ = {
 			isa = PBXGroup;
 			children = (
 				61C37C2B2ABB8EF900E08DD9 /* FirestoreService.swift */,
 			);
-			path = Firebase;
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		61C37C2F2ABB94F800E08DD9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				61C37C2A2ABB8EDF00E08DD9 /* Firestore */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

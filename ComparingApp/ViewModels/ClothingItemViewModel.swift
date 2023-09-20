@@ -1,7 +1,7 @@
 import Combine
 
 class ClothingItemViewModel: ObservableObject {
-    private let firestoreService = FirestoreService() // Your Firestore service instance
+    private let firestoreService = FirestoreService() 
 
     @Published var tasks: [Clothingitem] = []
 

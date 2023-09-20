@@ -85,6 +85,9 @@ struct HomeView: View {
                 ChooseClothesView()
             }
         }
+        .onAppear{
+            Clothingitem.defineMigrationBlock()
+        }
     }
 }
 
