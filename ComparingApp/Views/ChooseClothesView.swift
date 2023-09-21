@@ -8,6 +8,7 @@ struct ChooseClothesView: View {
     @State private var chosenButtonClicked: Bool = false
     @State private var shouldShowSheet: Bool = false
     @State private var showSheet: Bool = false
+    @State private var navigateToProcessedScreen: Bool = false
     @State var textTotype = ""
     
     var body: some View {
@@ -109,7 +110,7 @@ struct ChooseClothesView: View {
                 .foregroundColor(.gray)
                 .opacity(0.6)
                 
-                TextField("Please enter link (Optional)", text: $textTotype)
+                TextField("Please paste image address (Optional)", text: $textTotype)
                     .padding()
                     .background {
                         RoundedRectangle(cornerRadius: 10)
@@ -119,12 +120,20 @@ struct ChooseClothesView: View {
                     .padding(.horizontal)
             }
             Spacer()
-            NavigationLink {
-                ProcessedImageView(viewModel: viewModel)
-            } label: {
-                if viewModel.isLoading {
+            NavigationLink(destination: ProcessedImageView(viewModel: viewModel),
+                           isActive: $navigateToProcessedScreen) {
+                if viewModel.isLoading{
                     ProgressView()
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(content: {
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundColor(.gray)
+                                .opacity(0.2)
+                        })
+                        .padding(.horizontal)
                 } else {
+                    
                     Text("Continue")
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -135,15 +144,21 @@ struct ChooseClothesView: View {
                         })
                         .padding(.horizontal)
                         .disabled(viewModel.image == nil)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            viewModel.isLoading = true
+                            if textTotype != ""{
+                                viewModel.predictClothingURL(urlString: textTotype){
+                                    navigateToProcessedScreen.toggle()
+                                }
+                            } else {
+                                viewModel.predictClothingItem {
+                                    navigateToProcessedScreen.toggle()
+                                }
+                            }
+                        }
                 }
             }
-            .simultaneousGesture(
-                TapGesture()
-                    .onEnded { _ in
-                        viewModel.isLoading = true
-                    }
-            )
-            
         }
         .padding(.vertical)
         .sheet(isPresented: $viewModel.showPicker) {
@@ -156,9 +171,9 @@ struct ChooseClothesView: View {
             Button {
                 dismiss()
             } label: {
-               Text("Cancel")
+                Text("Cancel")
             }
-
+            
         }
     }
 }

@@ -53,6 +53,7 @@ struct HomeView: View {
                                         .foregroundColor(.gray.opacity(0.3))
                                 })
                         }
+                        .tint(.black)
                     }
                     
                 }

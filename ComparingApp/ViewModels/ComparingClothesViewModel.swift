@@ -59,7 +59,7 @@ class ComparingClothesViewModel: ObservableObject {
     }
     
     
-       func predictClothingItem() {
+    func predictClothingItem( completion: @escaping () -> Void) {
            isLoading = true
            guard var chosenImage = image else { return }
            print(image?.dominantColors(k: 5))
@@ -82,8 +82,7 @@ class ComparingClothesViewModel: ObservableObject {
                    let vitResults = try vitClassifier?.prediction(input: MobileViT_fp16Input(imageWith: chosenCgImage))
                    
                    
-//                   classLabel += "\(effResulst?.classLabel ?? "")"
-//                   classLabel += ", \(vitResults?.classLabel ?? "")"
+
                    imageDescritptors.append(contentsOf:  results?.classLabel.components(separatedBy: ",") ?? [])
                    imageDescritptors.append(contentsOf:  vitResults?.classLabel.components(separatedBy: ",") ?? [])
                    imageDescritptors.append(contentsOf:  effResulst?.classLabel.components(separatedBy: ",") ?? [])
@@ -91,6 +90,7 @@ class ComparingClothesViewModel: ObservableObject {
                    var setOfDescriptors = Set<String>()
                    setOfDescriptors = Set(imageDescritptors)
                    imageDescritptors = Array(setOfDescriptors)
+                   completion()
                }
                
            } catch {
@@ -99,7 +99,7 @@ class ComparingClothesViewModel: ObservableObject {
        }
     
     
-    func predictClothingURL(urlString: String){
+    func predictClothingURL(urlString: String, compleiton: @escaping () -> Void){
         
         downloadImage(urlString: urlString){ [weak self] downloadedImage in
             
@@ -117,8 +117,16 @@ class ComparingClothesViewModel: ObservableObject {
                     let results =  try   self?.clothingClassifier?.prediction(input: Resnet50Input(imageWith: chosenCgImage))
                     let effResulst  = try   self?.secondClothingClassifier?.prediction(input: efficientnetv2sInput(keras_layer_1_inputWith: chosenCgImage))
                     let vitResults = try   self?.vitClassifier?.prediction(input: MobileViT_fp16Input(imageWith: chosenCgImage))
-                    self?.classLabel = vitResults?.classLabel ?? ""
+                    
+                    self?.imageDescritptors.append(contentsOf:  results?.classLabel.components(separatedBy: ",") ?? [])
+                    self?.imageDescritptors.append(contentsOf:  vitResults?.classLabel.components(separatedBy: ",") ?? [])
+                    self?.imageDescritptors.append(contentsOf:  effResulst?.classLabel.components(separatedBy: ",") ?? [])
+                    
+                    var setOfDescriptors = Set<String>()
+                    setOfDescriptors = Set(self?.imageDescritptors ?? [])
+                    self?.imageDescritptors = Array(setOfDescriptors)
                 }
+                compleiton()
                 
             } catch {
                 

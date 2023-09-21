@@ -55,6 +55,7 @@
 		61C37C362ABC2B3200E08DD9 /* RealmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C37C352ABC2B3200E08DD9 /* RealmViewModel.swift */; };
 		61C37C392ABC2C3700E08DD9 /* DataRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C37C382ABC2C3700E08DD9 /* DataRepositoryProtocol.swift */; };
 		61C37C3B2ABC321700E08DD9 /* ClothingItemGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C37C3A2ABC321700E08DD9 /* ClothingItemGridCell.swift */; };
+		61C37C3D2ABC5E7100E08DD9 /* ImageProcessingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C37C3C2ABC5E7100E08DD9 /* ImageProcessingProtocol.swift */; };
 		61E01F622AB3015300F7F9B9 /* ColorThiefSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 61E01F612AB3015300F7F9B9 /* ColorThiefSwift */; };
 		61FACA692AAA24C500B9508E /* efficientnetv2s.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 61FACA682AAA24C500B9508E /* efficientnetv2s.mlmodel */; };
 		61FACA6B2AAA6CCF00B9508E /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 61FACA6A2AAA6CCF00B9508E /* Resnet50.mlmodel */; };
@@ -116,6 +117,7 @@
 		61C37C352ABC2B3200E08DD9 /* RealmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmViewModel.swift; sourceTree = "<group>"; };
 		61C37C382ABC2C3700E08DD9 /* DataRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepositoryProtocol.swift; sourceTree = "<group>"; };
 		61C37C3A2ABC321700E08DD9 /* ClothingItemGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItemGridCell.swift; sourceTree = "<group>"; };
+		61C37C3C2ABC5E7100E08DD9 /* ImageProcessingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingProtocol.swift; sourceTree = "<group>"; };
 		61FACA682AAA24C500B9508E /* efficientnetv2s.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = efficientnetv2s.mlmodel; sourceTree = "<group>"; };
 		61FACA6A2AAA6CCF00B9508E /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -337,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				61C37C382ABC2C3700E08DD9 /* DataRepositoryProtocol.swift */,
+				61C37C3C2ABC5E7100E08DD9 /* ImageProcessingProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				6159C5EC2AB480F2007CDAB2 /* BeforeAndAfterSlider.swift in Sources */,
 				61C37C3B2ABC321700E08DD9 /* ClothingItemGridCell.swift in Sources */,
 				5C4531082AA05E8300C7FD49 /* AnimalCalssifier.mlmodel in Sources */,
+				61C37C3D2ABC5E7100E08DD9 /* ImageProcessingProtocol.swift in Sources */,
 				5C4531002AA05B6000C7FD49 /* ComparingClothesViewModel.swift in Sources */,
 				5C4531042AA05BC000C7FD49 /* ImagePicker.swift in Sources */,
 				61C37C122ABB512C00E08DD9 /* MobileViT_fp16.mlpackage in Sources */,

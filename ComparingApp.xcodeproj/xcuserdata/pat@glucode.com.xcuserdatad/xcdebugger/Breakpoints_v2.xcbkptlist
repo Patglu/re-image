@@ -14,8 +14,8 @@
             filePath = "ComparingApp/ViewModels/ComparingClothesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "createClippedImage()"
             landmarkType = "7">
             <Locations>

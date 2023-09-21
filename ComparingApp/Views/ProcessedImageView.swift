@@ -100,7 +100,7 @@ struct ProcessedImageView: View {
                 .frame(maxWidth: .infinity)
                 .background(content: {
                     RoundedRectangle(cornerRadius: 15)
-                        .opacity(selectedFeedback == "" || selectedDescription == "" ? 1 : 0.4)
+                        .opacity(selectedFeedback == "" && selectedDescription == "" ? 0.4 : 1)
                         .foregroundColor(.black)
                         .padding(.horizontal)
                 })
@@ -132,10 +132,6 @@ struct ProcessedImageView: View {
                 
             Spacer()
                 .frame(height: 50)
-        }
-        .onAppear(){
-            viewModel.colorsFromImage = []
-            viewModel.predictClothingItem()
         }
         .sheet(isPresented: $showHome) {
             HomeView()

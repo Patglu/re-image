@@ -81,7 +81,7 @@ struct ImagesFromURL: View {
                             }
                             Button("Mask") {
                                 viewModel.image = safeSelection
-                                viewModel.predictClothingItem()
+//                                viewModel.predictClothingItem()
                             }
                         }
                     }
