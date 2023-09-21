@@ -52,10 +52,6 @@ struct ProcessedImageView: View {
                     }
                 }
                 
-                
-                
-                
-                
                 if !viewModel.colorsFromImage.isEmpty {
                     Text("Colour palette")
                         .bold()
@@ -104,7 +100,7 @@ struct ProcessedImageView: View {
                 .frame(maxWidth: .infinity)
                 .background(content: {
                     RoundedRectangle(cornerRadius: 15)
-                        .opacity(selectedFeedback == "" && selectedDescription == "" ? 1 : 0.4)
+                        .opacity(selectedFeedback == "" || selectedDescription == "" ? 1 : 0.4)
                         .foregroundColor(.black)
                         .padding(.horizontal)
                 })

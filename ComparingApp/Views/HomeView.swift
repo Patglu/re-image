@@ -3,7 +3,7 @@ import SwiftUI
 import RealmSwift
 
 struct HomeView: View {
-    @ObservedResults(Clothingitem.self) var clothingItems
+    @StateObject var viewModel = RealmViewModel()
     @State private var showAddingMenu: Bool = false
     
     let columns = [
@@ -13,7 +13,7 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView {
-            if clothingItems.isEmpty {
+            if viewModel.clothes.isEmpty {
                 HStack{
                     RoundedRectangle(cornerRadius: 15)
                         .opacity(0.15)
@@ -37,33 +37,22 @@ struct HomeView: View {
                 }
             } else {
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(clothingItems) { item in
-                        RoundedRectangle(cornerRadius: 15)
-                            .frame(height: 200)
-                            .foregroundColor(.clear)
-                            .overlay(alignment: .center){
-                                VStack{
-                                    if let image = item.itemImage.toUIImage(){
-                                        Image(uiImage: image)
-                                            .resizable()
-                                            .scaledToFit()
-                                        Text(item.itemDescription)
-                                        HStack(spacing: 0) {
-                                            ForEach(item.colors, id:\.self) { color in
-                                                Rectangle()
-                                                    .foregroundColor(Color(uiColor: color.hexToUIColor() ?? UIColor()))
-                                                    .frame(height: 10)
-                                            }
-                                        }
-                                        .padding()
-                                    }
+                    ForEach(viewModel.clothes) { item in
+                        NavigationLink {
+                            ClothingDetailView(clothingItem: item, viewModel: viewModel)
+                        } label: {
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(height: 200)
+                                .foregroundColor(.clear)
+                                .overlay(alignment: .center){
+                                    ClothingItemGridCell(clothingItem: item)
                                 }
-                            }
-                            .overlay(content: {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(lineWidth: 1)
-                                    .foregroundColor(.gray.opacity(0.3))
-                            })
+                                .overlay(content: {
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(lineWidth: 1)
+                                        .foregroundColor(.gray.opacity(0.3))
+                                })
+                        }
                     }
                     
                 }
@@ -85,9 +74,7 @@ struct HomeView: View {
                 ChooseClothesView()
             }
         }
-        .onAppear{
-            Clothingitem.defineMigrationBlock()
-        }
+
     }
 }
 

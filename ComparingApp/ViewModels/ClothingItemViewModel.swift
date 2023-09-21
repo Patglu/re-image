@@ -1,7 +1,7 @@
 import Combine
 
 class ClothingItemViewModel: ObservableObject {
-    private let firestoreService = FirestoreService() 
+    private let firestoreService = FirestoreService()
 
     @Published var tasks: [Clothingitem] = []
 
@@ -27,7 +27,7 @@ class ClothingItemViewModel: ObservableObject {
                     print("Error adding task: \(error.localizedDescription)")
                 }
             }, receiveValue: { _ in
-                self.loadTasks() // Reload the tasks after adding
+                self.loadTasks() // Reload after adding
             })
             .store(in: &cancellables)
     }
@@ -51,7 +51,7 @@ class ClothingItemViewModel: ObservableObject {
                     print("Error deleting task: \(error.localizedDescription)")
                 }
             }, receiveValue: { _ in
-                self.loadTasks() // Reload the tasks after deleting
+                self.loadTasks() // Reload after deleting
             })
             .store(in: &cancellables)
     }

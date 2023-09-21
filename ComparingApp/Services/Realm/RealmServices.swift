@@ -1,0 +1,65 @@
+import RealmSwift
+import Combine
+
+class RealmService: ObservableObject {
+    private var realm: Realm
+    
+    init() {
+        do {
+            self.realm = try Realm()
+        } catch {
+            fatalError("Error initializing Realm: \(error)")
+        }
+    }
+    
+    func add<T: Object>(_ object: T) -> AnyPublisher<Void, Error> {
+        return Future<Void, Error> { promise in
+            do {
+                try self.realm.write {
+                    self.realm.add(object)
+                }
+                promise(.success(()))
+            } catch {
+                promise(.failure(error))
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func get<T: Object>(_ objectType: T.Type) -> AnyPublisher<[T], Error> {
+        return Future<[T], Error> { promise in
+            let results = self.realm.objects(objectType)
+            let objects = Array(results)
+            promise(.success(objects))
+        }.eraseToAnyPublisher()
+    }
+    
+    func update<T: Object>(_ object: T, with block: @escaping () -> Void) -> AnyPublisher<Void, Error> {
+        return Future<Void, Error> { promise in
+            do {
+                try self.realm.write {
+                    block()
+                }
+                promise(.success(()))
+            } catch {
+                promise(.failure(error))
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func delete(_ id: String) -> AnyPublisher<Void, Error> {
+        return Future<Void, Error> { promise in
+            do {
+                let objectId = try ObjectId(string: id)
+                if let clothing = self.realm.object(ofType: Clothingitem.self, forPrimaryKey: objectId) {
+                    try self.realm.write {
+                        self.realm.delete(clothing)
+                    }
+                }
+                promise(.success(()))
+            } catch {
+                promise(.failure(error))
+            }
+        }.eraseToAnyPublisher()
+    }
+
+}
