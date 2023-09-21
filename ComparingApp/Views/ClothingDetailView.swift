@@ -25,9 +25,6 @@ struct ClothingDetailView: View {
                 Text("Description")
                     .bold()
                     .padding(.top)
-                Text("Please select the most accurate description or add your own")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
                 
                 TextField(clothingItem.itemDescription, text: $editedDescription)
                 
