@@ -18,7 +18,7 @@ struct ClothingDetailView: View {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(3/4, contentMode: .fit)
-                    .frame(height: 300)
+                    .frame(height: 250)
             }
             
             VStack(alignment: .leading) {

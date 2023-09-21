@@ -33,19 +33,33 @@ class RealmService: ObservableObject {
         }.eraseToAnyPublisher()
     }
     
-    func update<T: Object>(_ object: T, with block: @escaping () -> Void) -> AnyPublisher<Void, Error> {
+    func update(id: String,newTitle: String, with block: @escaping () -> Void) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { promise in
             do {
+                let objectId = try ObjectId(string: id)
+                let clothing = self.realm.object(ofType: Clothingitem.self, forPrimaryKey: objectId)
                 try self.realm.write {
+                    clothing?.itemDescription = newTitle
                     block()
                 }
-                promise(.success(()))
             } catch {
                 promise(.failure(error))
             }
         }.eraseToAnyPublisher()
     }
     
+    //    do {
+    //        let realm = try Realm()
+    //        let objectId = try ObjectId(string: item.id.stringValue)
+    //        let clothing = realm.object(ofType: Clothingitem.self, forPrimaryKey: objectId)
+    //        try realm.write {
+    //            clothing?.itemDescription = newTitle
+    //            block()
+    //        }
+    //    } catch let error {
+    //        print(error.localizedDescription)
+    //    }
+    //
     func delete(_ id: String) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { promise in
             do {
@@ -61,5 +75,7 @@ class RealmService: ObservableObject {
             }
         }.eraseToAnyPublisher()
     }
-
+    
+    
+    
 }
