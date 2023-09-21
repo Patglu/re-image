@@ -25,16 +25,7 @@ class RealmViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-    
-    func addObject(_ item: Clothingitem) {
-        realmService.add(item)
-            .sink(receiveCompletion: { _ in }) { [weak self] _ in
-                self?.fetchObjects()
-            }
-            .store(in: &cancellables)
-    }
-    
-    
+        
     func updateTitle(_ item: Clothingitem, newTitle: String, with block: @escaping () -> Void) {
         realmService.update(id: item.id.stringValue, newTitle: newTitle) {
             block()

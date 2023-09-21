@@ -2,7 +2,9 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Combine
 
-class FirestoreService: ObservableObject {
+class FirestoreService: ObservableObject, FireStoreRepository {
+    typealias T = Clothingitem
+    
     
     private let db = Firestore.firestore()
     private var cancellables: Set<AnyCancellable> = []
