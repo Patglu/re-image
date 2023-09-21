@@ -62,9 +62,9 @@ class ComparingClothesViewModel: ObservableObject {
     func predictClothingItem( completion: @escaping () -> Void) {
            isLoading = true
            guard var chosenImage = image else { return }
-           print(image?.dominantColors(k: 5))
            chosenImage = chosenImage.scale(newWidth: 640, newHeight: 960)
-           guard let pixelBuffer = chosenImage.toCVPixelBuffer() else { return }
+            guard chosenImage.toCVPixelBuffer() != nil   else { return }
+        
            classLabel = ""
            do {
                let result  = try imageSegmentor?.prediction(input: clothSegmentationInput(x_1With: chosenImage.cgImage!))
