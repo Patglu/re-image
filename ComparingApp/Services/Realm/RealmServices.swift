@@ -1,7 +1,8 @@
 import RealmSwift
 import Combine
 
-class RealmService: ObservableObject {
+class RealmService: ObservableObject, RealmRepository {
+    typealias T = Clothingitem
     private var realm: Realm
     
     init() {
@@ -47,19 +48,7 @@ class RealmService: ObservableObject {
             }
         }.eraseToAnyPublisher()
     }
-    
-    //    do {
-    //        let realm = try Realm()
-    //        let objectId = try ObjectId(string: item.id.stringValue)
-    //        let clothing = realm.object(ofType: Clothingitem.self, forPrimaryKey: objectId)
-    //        try realm.write {
-    //            clothing?.itemDescription = newTitle
-    //            block()
-    //        }
-    //    } catch let error {
-    //        print(error.localizedDescription)
-    //    }
-    //
+
     func delete(_ id: String) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { promise in
             do {

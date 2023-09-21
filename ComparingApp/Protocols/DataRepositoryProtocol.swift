@@ -2,10 +2,13 @@ import Foundation
 import Combine
 
 protocol DataRepository {
-    associatedtype T: Codable
     
-    func addDocument(_ data: T) -> AnyPublisher<Void, Error>
-    func getDocuments() -> AnyPublisher<[T], Error>
-    func updateDocument(_ data: T, completion: @escaping () -> Void) -> AnyPublisher<Void, Error> 
-    func deleteDocument(_ data: T) -> AnyPublisher<Void, Error>
+}
+
+protocol RealmRepository {
+    associatedtype T: Codable
+    func add(_ object: T) -> AnyPublisher<Void, Error>
+    func get(_ objectType: T.Type) -> AnyPublisher<[T], Error>
+    func update(id: String, newTitle: String, with block: @escaping () -> Void) -> AnyPublisher<Void, Error>
+    func delete(_ id: String) -> AnyPublisher<Void, Error>
 }
