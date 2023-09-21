@@ -41,17 +41,6 @@ struct ChooseClothesView: View {
                         .scaledToFit()
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .frame(height: 400)
-                    //                            .mask{
-                    //                                if let maskImage = viewModel.finalOutputImage {
-                    //                                    Image(uiImage: maskImage)
-                    //                                        .resizable()
-                    //                                        .scaledToFit()
-                    //                                        .frame(minWidth: 0, maxWidth: .infinity)
-                    //                                } else {
-                    //                                    EmptyView()
-                    //                                }
-                    //                            }
-                    
                 } else {
                     RoundedRectangle(cornerRadius: 15)
                         .opacity(0.15)
