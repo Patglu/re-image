@@ -164,6 +164,7 @@ struct ChooseClothesView: View {
             }
             
         }
+        
     }
 }
 

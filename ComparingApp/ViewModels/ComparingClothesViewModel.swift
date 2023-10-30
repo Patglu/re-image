@@ -41,11 +41,7 @@ class ComparingClothesViewModel: ObservableObject {
             print("Error intialising Model: \(error)")
         }
     }
-    
-    //MARK: Use Combine to replace to comletion block
-    func setup(){
-        
-    }
+
     
     func showPhotoPicker() {
         if source == .camera {
@@ -287,6 +283,19 @@ class ComparingClothesViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func clearFields() {
+        isLoading = false
+        image = nil
+        outputImage = nil
+        finalOutputImage = nil
+        showPicker = false
+        source = .library
+        imageDescritptors = []
+        imagesFromURL = []
+        selectedURLImage = nil
+        colorsFromImage = []
     }
 
 }

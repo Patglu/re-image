@@ -124,7 +124,7 @@ struct ProcessedImageView: View {
                     
                     try? realm.write{
                         realm.add(newItem)
-                        viewModel.image = nil
+                        viewModel.clearFields()
                         UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
                     }
                 }
